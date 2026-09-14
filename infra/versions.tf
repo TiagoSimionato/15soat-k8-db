@@ -1,6 +1,6 @@
 terraform {
   backend "local" {
-    path = "/opt/terraform/terraform.tfstate"
+    path = "/opt/terraform/db/terraform.tfstate"
   }
   required_providers {
     kind = {
