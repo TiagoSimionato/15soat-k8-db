@@ -23,31 +23,17 @@ resource "kubernetes_deployment" "db" {
 
           env {
             name  = "POSTGRES_USER"
-            value_from {
-              secret_key_ref {
-                name = var.postgres_user
-                key  = "POSTGRES_USER"
-              }
-            }
+            value =var.postgres_user
           }
 
           env {
             name  = "POSTGRES_PASSWORD"
-            value_from {
-              secret_key_ref {
-                name = var.postgres_password
-                key  = "POSTGRES_PASSWORD"
-              }
-            }
+            value = var.postgres_password
           }
+
           env {
             name  = "POSTGRES_DB"
-            value_from {
-              secret_key_ref {
-                name = var.postgres_db
-                key  = "POSTGRES_DB"
-              }
-            }
+            value = var.postgres_db
           }
 
           port {
