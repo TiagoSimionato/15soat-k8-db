@@ -10,6 +10,10 @@ variable "postgres_user_stock"         {}
 variable "postgres_password_stock"     {}
 variable "postgres_db_stock"           {}
 
+variable "postgres_user_payment"         {}
+variable "postgres_password_payment"     {}
+variable "postgres_db_payment"           {}
+
 variable "db_port"                     { default = "5432" }
 variable "kind_endpoint"               {}
 variable "kind_client_certificate"     {}

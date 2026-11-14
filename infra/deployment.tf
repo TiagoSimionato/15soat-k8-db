@@ -91,3 +91,50 @@ resource "kubernetes_deployment" "db-stock-update-service" {
     }
   }
 }
+
+resource "kubernetes_deployment" "db-payment-service" {
+  metadata {
+    name      = "db-payment-service"
+    namespace = var.namespace
+  }
+
+  spec {
+    replicas = 1
+
+    selector {
+      match_labels = { app = "db-payment-service" }
+    }
+
+    template {
+      metadata {
+        labels = { app = "db-payment-service" }
+      }
+
+      spec {
+        container {
+          name  = "postgres"
+          image = "postgres:18"
+
+          env {
+            name  = "POSTGRES_USER"
+            value = var.postgres_user_payment
+          }
+
+          env {
+            name  = "POSTGRES_PASSWORD"
+            value = var.postgres_password_payment
+          }
+
+          env {
+            name  = "POSTGRES_DB"
+            value = var.postgres_db_payment
+          }
+
+          port {
+            container_port = var.db_port
+          }
+        }
+      }
+    }
+  }
+}

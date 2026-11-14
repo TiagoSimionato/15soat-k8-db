@@ -33,3 +33,21 @@ resource "kubernetes_service" "db-stock-update-service" {
     type = "ClusterIP"
   }
 }
+
+resource "kubernetes_service" "db-payment-service" {
+  metadata {
+    name      = "db-svc-payment-service"
+    namespace = var.namespace
+  }
+
+  spec {
+    selector = { app = "db-payment-service" }
+
+    port {
+      port        = var.db_port
+      target_port = var.db_port
+    }
+
+    type = "ClusterIP"
+  }
+}

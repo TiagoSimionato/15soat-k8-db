@@ -28,6 +28,9 @@ jobs:
           TF_VAR_postgres_user_stock:         ${{ secrets.DB_USER_STOCK }}
           TF_VAR_postgres_password_stock:     ${{ secrets.DB_PASSWORD_STOCK }}
           TF_VAR_postgres_db_stock:           ${{ vars.DB_NAME_STOCK }}
+          TF_VAR_postgres_user_payment:       ${{ secrets.DB_USER_PAYMENT }}
+          TF_VAR_postgres_password_payment:   ${{ secrets.DB_PASSWORD_PAYMENT }}
+          TF_VAR_postgres_db_payment:         ${{ vars.DB_NAME_PAYMENT }}
           TF_VAR_kind_endpoint:               ${{ secrets.KIND_ENDPOINT }}
           TF_VAR_kind_client_certificate:     ${{ secrets.KIND_CLIENT_CERTIFICATE }}
           TF_VAR_kind_client_key:             ${{ secrets.KIND_CLIENT_KEY }}
