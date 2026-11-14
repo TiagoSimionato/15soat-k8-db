@@ -1,4 +1,4 @@
-# 15soat-k8-db
+# 15Soat-k8-db
 
 Terraform infrastructure for running the PostgreSQL database used by the 15soat Tech Challenge in a Kubernetes cluster.
 
