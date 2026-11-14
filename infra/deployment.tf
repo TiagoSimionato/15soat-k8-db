@@ -138,3 +138,50 @@ resource "kubernetes_deployment" "db-payment-service" {
     }
   }
 }
+
+resource "kubernetes_deployment" "db-status-update-service" {
+  metadata {
+    name      = "db-status-update-service"
+    namespace = var.namespace
+  }
+
+  spec {
+    replicas = 1
+
+    selector {
+      match_labels = { app = "db-status-update-service" }
+    }
+
+    template {
+      metadata {
+        labels = { app = "db-status-update-service" }
+      }
+
+      spec {
+        container {
+          name  = "mongo"
+          image = "mongo:8"
+
+          env {
+            name  = "MONGO_INITDB_ROOT_USERNAME"
+            value = var.mongo_user
+          }
+
+          env {
+            name  = "MONGO_INITDB_ROOT_PASSWORD"
+            value = var.mongo_password
+          }
+
+          env {
+            name  = "MONGO_INITDB_DATABASE"
+            value = var.mongo_db
+          }
+
+          port {
+            container_port = var.mongo_port
+          }
+        }
+      }
+    }
+  }
+}

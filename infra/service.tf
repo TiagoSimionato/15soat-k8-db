@@ -51,3 +51,21 @@ resource "kubernetes_service" "db-payment-service" {
     type = "ClusterIP"
   }
 }
+
+resource "kubernetes_service" "db-status-update-service" {
+  metadata {
+    name      = "db-svc-status-update-service"
+    namespace = var.namespace
+  }
+
+  spec {
+    selector = { app = "db-status-update-service" }
+
+    port {
+      port        = var.mongo_port
+      target_port = var.mongo_port
+    }
+
+    type = "ClusterIP"
+  }
+}
